@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">dotters</string>
+    <string name="progress_format">Ход: %s</string>
+    <string name="move_format">%s/%s</string>
+</resources>

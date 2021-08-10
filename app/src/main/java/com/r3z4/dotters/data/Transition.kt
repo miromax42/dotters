@@ -1,0 +1,21 @@
+package com.r3z4.dotters.data
+
+enum class Transition {
+    EMPTY_ON_2_OFF,
+    EMPTY_OFF_2_ON,
+    EMPTY_ON_CIR_ALIVE,
+    EMPTY_ON_CR_ALIVE,
+    CR_ALIVE_2_EMPTY_ON,
+    CIR_ALIVE_2_EMPTY_ON,
+    CR_ALIVE_2_CIR_DEAD_ON,
+    CIR_ALIVE_2_CR_DEAD_ON,
+    CR_ALIVE_2_CIR_DEAD_OFF,
+    CIR_ALIVE_2_CR_DEAD_OFF,
+    CIR_DEAD_ON_2_DEAD_OFF,
+    CR_DEAD_ON_2_DEAD_OFF,
+    CIR_DEAD_OFF_2_DEAD_ON,
+    CR_DEAD_OFF_2_DEAD_ON,
+    EMPTY_ON_NT,
+    EMPTY_OFF_NT,
+    UNKNOWN
+}

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <variable
+            name="gameViewModel"
+            type="com.r3z4.dotters.game.GameViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#8E8E8E"
+        tools:context=".game.GameFragment">
+
+        <TextView
+            android:id="@+id/text_all_moves_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab"
+            android:text="@{@string/progress_format(gameViewModel.pointerString)}"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSide"
+            app:layout_constraintEnd_toStartOf="@+id/imageSide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageSide" />
+
+        <TextView
+            android:id="@+id/text_move_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab"
+            android:text="@{@string/move_format(gameViewModel.moveNumberString,gameViewModel.moveCountMaxString)}"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerGame"
+            app:layout_constraintEnd_toEndOf="@+id/imageSide"
+            app:layout_constraintStart_toStartOf="@+id/imageSide"
+            app:layout_constraintTop_toBottomOf="@+id/imageSide" />
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            app:layout_constraintDimensionRatio="H,1:1"-->
+        <!--            android:background="@drawable/background1xxxhdpi"-->
+        <!--            android:gravity="center"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:overScrollMode="never"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/text_move_number"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/imageSide"-->
+        <!--            android:layout_marginStart="8dp"-->
+        <!--            android:layout_marginLeft="8dp"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            android:layout_marginEnd="8dp"-->
+        <!--            android:layout_marginRight="8dp"-->
+        <!--            android:layout_marginBottom="8dp">-->
+
+        <!--        </LinearLayout>-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button_change_side"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="8dp"-->
+        <!--            android:layout_marginLeft="8dp"-->
+        <!--            android:layout_marginEnd="8dp"-->
+        <!--            android:layout_marginRight="8dp"-->
+        <!--            android:layout_marginBottom="8dp"-->
+        <!--            android:enabled="@{gameViewModel.changeSideButtonActive}"-->
+        <!--            android:onClick="@{()->gameViewModel.changeSide()}"-->
+        <!--            android:text="change side"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerGame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/background2xxxhdpi"
+            android:isScrollContainer="false"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toTopOf="@+id/button_change_side"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/button_change_side"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/mid_buttom_size_big"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintDimensionRatio="W,80:55"
+            android:enabled="@{gameViewModel.changeSideButtonActive}"
+            android:onClick="@{()->gameViewModel.changeSide()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false" />
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button_undo"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="8dp"-->
+        <!--            android:layout_marginLeft="8dp"-->
+        <!--            android:layout_marginBottom="8dp"-->
+        <!--            android:enabled="@{gameViewModel.undoButtonVisible}"-->
+        <!--            android:onClick="@{()->gameViewModel.undo()}"-->
+        <!--            android:text="Undo"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/button_change_side"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/button_undo"
+            android:layout_width="@dimen/item_undo_size"
+            android:layout_height="@dimen/item_undo_size"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:enabled="@{gameViewModel.undoButtonVisible}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_change_side"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/undo_arrow" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/button_redo"
+            android:layout_width="@dimen/item_undo_size"
+            android:layout_height="@dimen/item_undo_size"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="8dp"
+            android:enabled="@{gameViewModel.redoButtonVisible}"
+            android:onClick="@{()->gameViewModel.redo()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_change_side"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/info_button" />
+
+        <Button
+            android:id="@+id/button_reset"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:enabled="@{gameViewModel.resetButtonVisible}"
+            android:onClick="@{()->gameViewModel.resetData()}"
+            android:text="Reset"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSide"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.612"
+            app:layout_constraintStart_toEndOf="@+id/imageSide"
+            app:layout_constraintTop_toTopOf="@+id/imageSide" />
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/imageSide"-->
+        <!--        android:layout_width="@dimen/item_dotter_size_big"-->
+        <!--        android:layout_height="@dimen/item_dotter_size_big"-->
+        <!--        android:layout_marginStart="8dp"-->
+        <!--        android:layout_marginLeft="8dp"-->
+        <!--        android:layout_marginTop="8dp"-->
+        <!--        android:layout_marginEnd="8dp"-->
+        <!--        android:layout_marginRight="8dp"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent" />-->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/imageSide"
+            android:layout_width="@dimen/item_dotter_size_big"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintDimensionRatio="H,8:5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </layout>
